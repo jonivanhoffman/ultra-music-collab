@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a0d2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #16213e;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0f3460;
+}
+
+/* Music visualization animations */
+@keyframes waveform {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px #00d4ff; 
+  }
+  50% { 
+    box-shadow: 0 0 20px #00d4ff, 0 0 30px #00d4ff; 
+  }
+}
+
+@keyframes spectrum {
+  0% { transform: scaleY(0.3); }
+  25% { transform: scaleY(0.8); }
+  50% { transform: scaleY(1); }
+  75% { transform: scaleY(0.6); }
+  100% { transform: scaleY(0.3); }
+}
+
+/* Custom component classes */
+.waveform-bar {
+  @apply bg-gradient-to-t from-neon-blue to-neon-pink;
+  animation: waveform 1s ease-in-out infinite;
+}
+
+.spectrum-bar {
+  @apply bg-gradient-to-t from-neon-green to-neon-yellow;
+  animation: spectrum 2s ease-in-out infinite;
+}
+
+.glow-button {
+  @apply bg-gradient-to-r from-neon-blue to-neon-pink text-white font-bold py-2 px-4 rounded transition-all duration-300;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.glow-button:hover {
+  @apply scale-105;
+  animation-duration: 1s;
+}
+
+/* Audio waveform container */
+.waveform-container {
+  @apply flex items-end justify-center space-x-1 h-32;
+}
+
+.waveform-container .bar {
+  @apply w-2 bg-gradient-to-t from-neon-blue via-neon-pink to-neon-yellow rounded-t;
+  animation: waveform var(--delay, 0s) 2s ease-in-out infinite;
+}
+
+/* Loading states */
+.loading-dots {
+  @apply flex space-x-1;
+}
+
+.loading-dots div {
+  @apply w-2 h-2 bg-neon-blue rounded-full;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loading-dots div:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.loading-dots div:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Focus styles for accessibility */
+.focus-visible {
+  @apply outline-none ring-2 ring-neon-blue ring-offset-2 ring-offset-dark-purple;
+}
+
+/* Dark theme base */
+body {
+  @apply bg-dark-purple text-white;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom utility classes */
+.text-glow {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.border-glow {
+  box-shadow: 0 0 10px currentColor;
+}
